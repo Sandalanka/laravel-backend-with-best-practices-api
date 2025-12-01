@@ -41,4 +41,49 @@ class AuthService
             throw $exception;
         }
     }
+
+    /**
+     *
+     * Summery: User login
+     *
+     * @param Request $request
+     * @return array
+     * @throws Exception
+     */
+    public function login(Request $request): array
+    {
+        try {
+
+            return $this->authRepository->login($request);
+
+        } catch (Exception $exception) {
+            ApiCatchErrors::throw($exception,
+                'An error occurred while login a auth-(service): '
+            );
+
+            throw $exception;
+        }
+    }
+
+    /**
+     *
+     * Summery: User logout
+     *
+     * @param Request $request
+     * @return void
+     * @throws Exception
+     */
+    public function logout(Request $request): void
+    {
+        try {
+            $this->authRepository->logout($request);
+
+        } catch (Exception $exception) {
+            ApiCatchErrors::throw($exception,
+                'An error occurred while logout a auth-(service): '
+            );
+
+            throw $exception;
+        }
+    }
 }
