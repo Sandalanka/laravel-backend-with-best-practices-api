@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Swagger;
+
+class AuthControllerDocs
+{
+    /**
+     * @OA\Post(
+     *     path="/api/v1/auth/register",
+     *     summary="User Register",
+     *     description="Auth user register",
+     *     tags={"Authentication"},
+     *
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name","email","password","password_confirmation"},
+     *             @OA\Property(property="name", type="string", example="Isuru"),
+     *             @OA\Property(property="email", type="string", format="email", example="test001@iposg.com"),
+     *             @OA\Property(
+     *                 property="password",
+     *                 type="string",
+     *                 example="Test@123",
+     *                 description="Min 8 chars, must include uppercase, lowercase, number, symbol"
+     *             ),
+     *              @OA\Property(
+     *                  property="password_confirmation",
+     *                  type="string",
+     *                  example="Test@123",
+     *                  description="Min 8 chars, must include uppercase, lowercase, number, symbol"
+     *              )
+     *         )
+     *     ),
+     * *
+     *     @OA\Response(
+     *         response=200,
+     *         description="User registered successfully",
+     *         @OA\JsonContent(
+     *            @OA\Property(property="status", type="string", example="success"),
+     *            @OA\Property(property="timestamp", type="string", example="2025-11-30 14:24:05"),
+     *            @OA\Property(property="message", type="string", example="User registered successfully."),
+     *            @OA\Property(
+     *                property="data",
+     *                type="object",
+     *                @OA\Property(
+     *                    property="user",
+     *                    type="object",
+     *                    @OA\Property(property="id", type="integer", example=9),
+     *                    @OA\Property(property="name", type="string", example="Isuru Sandalanka"),
+     *                    @OA\Property(property="email", type="string", example="test001@iposg.com"),
+     *                ),
+     *                @OA\Property(property="token", type="string", example="9|AASD98ASD8A7SD8A7D")
+     *            )
+     *         )
+     *     ),
+     *
+     *     @OA\Response(
+     *         response=422,
+     *         description="Validation Error",
+     *         @OA\JsonContent(
+     *            @OA\Property(property="status", type="boolean", example=false),
+     *            @OA\Property(property="message", type="string", example="Validation errors"),
+     *            @OA\Property(
+     *                property="errors",
+     *                type="object",
+     *                example={
+     *                    "email": {"The email field is required."},
+     *                    "password": {"The password field is required."}
+     *                }
+     *            ),
+     *            @OA\Property(property="timestamp", type="string", example="2025-10-31 05:30:24")
+     *         )
+     *     ),
+     *
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\JsonContent(
+     *            @OA\Property(property="status", type="string", example="Error"),
+     *            @OA\Property(property="message", type="string", example="Something went wrong.")
+     *         )
+     *     )
+     * )
+     *
+     * @OA\SecurityScheme(
+     *     securityScheme="bearerAuth",
+     *     type="http",
+     *     scheme="bearer",
+     *     bearerFormat="JWT"
+     * )
+     *
+     */
+    public function __construct()
+    {
+        //
+    }
+}
