@@ -17,7 +17,7 @@ class RegisterRequest extends BaseRequest
             'name' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'confirmed', 'min:8', 'regex:/[A-Z]/', 'regex:/[a-z]/',
-                'regex:/[0-9]/', 'regex:/[@$!%*#?&]/'],
+                'regex:/[0-9]/', 'regex:/[@$!%*#?&]/']
         ];
     }
 
