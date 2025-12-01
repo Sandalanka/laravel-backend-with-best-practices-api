@@ -44,4 +44,63 @@ class AuthRepository implements AuthContract
             throw $exception;
         }
     }
+
+    /**
+     *
+     * Summery: User login
+     *
+     * @param Request $request
+     * @return array|false[]
+     * @throws Exception
+     */
+    public function login(Request $request): array
+    {
+        try {
+            $user = User::where('email', $request->email)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+                $user->tokens()->delete();
+                $token = $user->createToken('Personal Access Token')->plainTextToken;
+
+                return [
+                    'status' => true,
+                    'user' => $user,
+                    'token' => $token
+                ];
+            }
+
+            return [
+                'status' => false
+            ];
+
+        } catch (Exception $exception) {
+            ApiCatchErrors::throw($exception,
+                'An error occurred while login a auth-(repository): '
+            );
+
+            throw $exception;
+        }
+    }
+
+    /**
+     *
+     * Summery: User logout
+     *
+     * @param Request $request
+     * @return void
+     * @throws Exception
+     */
+    public function logout(Request $request): void
+    {
+        try {
+            $request->user()->currentAccessToken()->delete();
+
+        } catch (Exception $exception) {
+            ApiCatchErrors::throw($exception,
+                'An error occurred while logout a auth-(repository): '
+            );
+
+            throw $exception;
+        }
+    }
 }
