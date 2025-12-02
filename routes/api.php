@@ -16,6 +16,6 @@ Route::prefix('v1')->group(function () {
         Route::get('/', [ProductController::class, 'index']);
         Route::post('/', [ProductController::class, 'store']);
         Route::put('/{productId}', [ProductController::class, 'update']);
-        Route::delete('/{productId}', [ProductController::class, 'delete']);
+        Route::delete('/{productId}', [ProductController::class, 'destroy']);
     });
 });
