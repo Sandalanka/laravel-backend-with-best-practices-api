@@ -21,7 +21,6 @@ class ProductRepository implements ProductContract
     public function index(): Collection
     {
         try {
-
             return Product::all();
 
         } catch (Exception $exception) {

@@ -30,7 +30,6 @@ class AuthService
     public function register(Request $request): array
     {
         try {
-
             return $this->authRepository->register($request);
 
         } catch (Exception $exception) {
@@ -53,7 +52,6 @@ class AuthService
     public function login(Request $request): array
     {
         try {
-
             return $this->authRepository->login($request);
 
         } catch (Exception $exception) {

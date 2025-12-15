@@ -31,6 +31,7 @@ class AuthController extends Controller
      *
      * @param RegisterRequest $request
      * @return JsonResponse
+     * @throws \Throwable
      */
     public function register(RegisterRequest $request): JsonResponse
     {

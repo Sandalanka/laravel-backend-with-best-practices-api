@@ -31,7 +31,6 @@ class ProductService
     public function index(): Collection
     {
         try {
-
             return $this->productContract->index();
 
         } catch (Exception $exception) {
@@ -54,7 +53,6 @@ class ProductService
     public function store(Request $request): Product
     {
         try {
-
             return $this->productContract->store($request);
 
         } catch (Exception $exception) {
